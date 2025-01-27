@@ -1,7 +1,8 @@
 # Real-time Notification System Architecture
 
 ## Overview
-When I set out to redesign the notification system, I needed an architecture that could handle thousands of concurrent connections without breaking a sweat. The solution combines Redis Pub/Sub, Golang, and Server-Sent Events (SSE) in a way that's both elegant and powerful.
+When I set out to design the notification system, I needed an architecture that could handle thousands of concurrent connections without breaking a sweat. The solution combines Redis Pub/Sub, Golang, and Server-Sent Events (SSE) in a way that's both elegant and powerful.
+![System Architecture](./diagram-SSE-golang.png)
 
 ## System Components
 
@@ -49,5 +50,3 @@ What makes this design particularly effective is how it handles scale. Thanks to
 
 ## Implementation Considerations
 This pattern is worth considering for anyone building a real-time notification system. It's simple enough to implement quickly but sophisticated enough to handle serious scale when needed.
-
-![System Architecture](./diagram-SSE-golang.png)
