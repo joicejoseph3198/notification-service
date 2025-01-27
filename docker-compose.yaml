@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Golang Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: golang_app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"  # Expose the port your Golang app listens on
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - app-network
+
+  # Redis Service
+  redis:
+    image: redis:latest
+    container_name: redis-pubsub
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+
+# Networks
+networks:
+  app-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  redis_data:
